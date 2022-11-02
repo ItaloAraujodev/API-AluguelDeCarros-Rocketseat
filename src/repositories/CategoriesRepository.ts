@@ -1,3 +1,12 @@
+// Repositorio e responsavel por fazer toda manipulação de nossa aplicação
+// Fazer acesso ao banco de dados
+// Fazer os cadastros, selects 
+// A rota chama o respositorio e o repositorio fazer a inserção ao banco de dados
+
+/* 1- as rotas existem apenas e unicamente para atender as requisições
+2- os repositórios existem apenas e unicamente para fazer operações para guardar e prover os dados persistidos. */
+
+
 import { Category } from '../model/Category'
 
 interface iCreateCategory {
