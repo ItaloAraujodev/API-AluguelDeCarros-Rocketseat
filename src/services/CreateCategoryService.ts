@@ -1,9 +1,9 @@
 /**
- * Não é de responsabilidade o service reconhecer o RESPONSE
+ * Não é de responsabilidade o service reconhecer o RESPONSE, para criar o errro use o throw new Error
  * Não é função do service saber qual é o o array. Exp, categoriesRepository.findByName
  */
 
-import { CategoriesRepository } from "../repositories/CategoriesRepository";
+import { ICategoryReposiroy } from "../repositories/ICatetoriesRepository";
 
 interface IRequest {
     name: string;
@@ -12,10 +12,10 @@ interface IRequest {
 
 class CreateCategoryService {
     //Inversão de dependências
-    constructor(private categoriesRepository: CategoriesRepository){}
+    constructor(private categoriesRepository: ICategoryReposiroy){}
 
     execute({ name, description }: IRequest): void {
-        const categoryAlreadyExists = this.categoriesRepository.findByName(name);
+    const categoryAlreadyExists = this.categoriesRepository.findByName(name);
 
     if(categoryAlreadyExists){
         throw new Error("Category already exists !");

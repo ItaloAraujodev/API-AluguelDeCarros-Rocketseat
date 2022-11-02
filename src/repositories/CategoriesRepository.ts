@@ -8,13 +8,10 @@
 
 
 import { Category } from '../model/Category'
+import { ICategoryReposiroy, ICreateCategory } from '../repositories/ICatetoriesRepository'
 
-interface iCreateCategory {
-    name: string;
-    description: string;
-}
 
-class CategoriesRepository {
+class CategoriesRepository implements ICategoryReposiroy {
     private categories: Category[];
 
     constructor() {
@@ -22,7 +19,7 @@ class CategoriesRepository {
     }
 
     //Adicionando elementos
-    create({ name, description } : iCreateCategory): void {
+    create({ name, description } : ICreateCategory): void {
         const category = new Category();
         // Como se fosse, category.name, category.description etc...
         Object.assign(category, {
