@@ -1,18 +1,16 @@
 import fs from "fs";
-import { PdfReader } from "pdfreader";
+import { parse } from 'csv-parse'
 
 class ImportCategoryUseCase {
 
     execute(file: Express.Multer.File): void{
-       /* const stream = fs.readFileSync(file.path); */
-        const pdf = new PdfReader().parseFileItems(file.path, (err: any, item:any) => {
-                if (err) console.error("error:", err);
-                else if (!item) console.warn("end of file");
-                else if (item.text) console.log(item.text);
-              });
-        
+      const stream = fs.createReadStream(file.path);
 
-       console.log(pdf)
+      const parseFile = parse()
+
+      stream.pipe(parseFile);
+
+      parseFile.on('data', async line => console.log(line))
     }
 }
 
