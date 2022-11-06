@@ -3,14 +3,14 @@
  * Não é função do service saber qual é o o array. Exp, categoriesRepository.findByName
  */
 
-import { ICategoryReposiroy } from "../repositories/ICatetoriesRepository";
+import { ICategoryReposiroy } from "../../repositories/ICatetoriesRepository";
 
 interface IRequest {
     name: string;
     description: string;
 }
 
-class CreateCategoryService {
+class CreateCategoryUseCase {
     //Inversão de dependências
     constructor(private categoriesRepository: ICategoryReposiroy){}
 
@@ -25,4 +25,4 @@ class CreateCategoryService {
     }
 }
 
-export { CreateCategoryService }
+export { CreateCategoryUseCase }
