@@ -7,8 +7,8 @@
 2- os repositórios existem apenas e unicamente para fazer operações para guardar e prover os dados persistidos. */
 
 
-import { Category } from '../model/Category'
-import { ICategoryReposiroy, ICreateCategory } from '../repositories/ICatetoriesRepository'
+import { Category } from '../../model/Category'
+import { ICategoryReposiroy, ICreateCategory } from '../ICatetoriesRepository'
 
 
 class CategoriesRepository implements ICategoryReposiroy {
