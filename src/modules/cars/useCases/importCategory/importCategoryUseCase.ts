@@ -25,6 +25,8 @@ class ImportCategoryUseCase {
            categories.push({name, description});
            })
            .on("end", () => {
+            //Removendo o file.path
+            fs.promises.unlink(file.path);
             resolve(categories)
         })
         .on('error', (err) => {
