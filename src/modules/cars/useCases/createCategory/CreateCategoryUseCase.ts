@@ -13,8 +13,10 @@ interface IRequest {
 class CreateCategoryUseCase {
     //Inversão de dependências
     constructor(private categoriesRepository: ICategoryReposiroy){}
+    
 
     execute({ name, description }: IRequest): void {
+        
     const categoryAlreadyExists = this.categoriesRepository.findByName(name);
 
     if(categoryAlreadyExists){
