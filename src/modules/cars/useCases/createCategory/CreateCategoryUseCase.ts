@@ -3,16 +3,19 @@
  * Não é função do service saber qual é o o array. Exp, categoriesRepository.findByName
  */
 
+import { inject, injectable } from 'tsyringe';
 import { ICategoryReposiroy } from "../../repositories/ICatetoriesRepository";
 
 interface IRequest {
     name: string;
     description: string;
 }
-
+@injectable() // Agora essa classe pode ser injetada, tipo, o controller pode chamar ela
 class CreateCategoryUseCase {
     //Inversão de dependências
-    constructor(private categoriesRepository: ICategoryReposiroy){}
+    constructor(
+        @inject("CategoriesRepository") // Agora não precisar mais usar o New para instanciar, o tsyringe faz isso agora
+        private categoriesRepository: ICategoryReposiroy){}
     
 
     async execute({ name, description }: IRequest): Promise<void> {

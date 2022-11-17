@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { CategoriesRepository } from '../modules/cars/repositories/implementations/CategoriesRepository';
-import createCategoryController from '../modules/cars/useCases/createCategory';
+
+import { CreateCategoryController } from '../modules/cars/useCases/createCategory/CreateCategoryController';
 import { listCategoriesController } from '../modules/cars/useCases/listCategory';
 import { importCategoryController } from '../modules/cars/useCases/importCategory';
 import multer from 'multer'
@@ -10,12 +11,12 @@ const upload = multer({
     dest: "./tmp",
 });
 
+const createCategoryController = new CreateCategoryController();
+
 // Instanciando
 /* const categoriesRepository = CategoriesRepository.getInstance(); */
 
-categoriesRoutes.post('/', (request, response) => {
-   return createCategoryController().handle(request, response);
-});
+categoriesRoutes.post('/', createCategoryController.handle);
 
 categoriesRoutes.get('/', (request, response) => {
     return listCategoriesController.handle(request, response)
