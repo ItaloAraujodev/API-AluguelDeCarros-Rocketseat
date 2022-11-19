@@ -1,6 +1,8 @@
 import { container } from 'tsyringe';
 import { ICategoryReposiroy } from "../../modules/cars/repositories/ICatetoriesRepository";
 import { CategoriesRepository } from "../../modules/cars/repositories/implementations/CategoriesRepository";
+import { SpecificationRepository } from '../../modules/cars/repositories/implementations/SpecificationRepository';
+import { ISpecificationRepositoryInterface } from '../../modules/cars/repositories/ISpecificationRepositoryInterface';
 
 //Singleton: 
 /**
@@ -9,6 +11,11 @@ import { CategoriesRepository } from "../../modules/cars/repositories/implementa
  */
 
 container.registerSingleton<ICategoryReposiroy>(
-    "CategoriesRepository", //Nome como vai ser chamado
+    "CategoriesRepository", //Nome que vai ser chamado
     CategoriesRepository // Class
+)
+
+container.registerSingleton<ISpecificationRepositoryInterface>(
+    "SpecificationRepository", //Nome que vai ser chamado
+    SpecificationRepository // Class
 )
